@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}
+  Технологии
+{% endblock %}
+{% block header %}
+  Какой-то заголовок
+{% endblock %}
+{% block content %}
+<div class="row">
+  <h1>Вот что я умею</h1>
+  <aside class="col-12 col-md-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Python
+      </li>
+      <li class="list-group-item">
+        Django
+      </li>
+      <li class="list-group-item">
+        Bootstrap
+      </li>
+    </ul>
+  </aside>
+  <article class="col-12 col-md-9">
+    <p>Для бэкенда использован фреймворк Django версии 2.2, для HTML использован фреймворк Bootstrap версии v5.0.1, код написан на языке программирования Python 3.7.9, использовалась система контроля верисй Git, проект размещён на GitHub. </p>
+  </article>
+</div>
+{% endblock %}
