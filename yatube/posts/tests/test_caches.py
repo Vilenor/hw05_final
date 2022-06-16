@@ -24,7 +24,9 @@ class CachesTests(TestCase):
     def test_index_cache(self):
         """Проверка кэширования страницы index."""
         response = self.client.get(reverse('posts:index'))
-        self.assertIn(CachesTests.post.text, response.context['page_obj'][0].text)
+        self.assertIn(
+            CachesTests.post.text, response.context['page_obj'][0].text
+        )
         temp = response.content
         Post.objects.get(id=CachesTests.post.id).delete()
         response_2 = self.client.get(reverse('posts:index'))
