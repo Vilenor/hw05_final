@@ -96,6 +96,7 @@ class PostPagesTests(TestCase):
     def test_index_page_show_correct_context(self):
         """Шаблон index сформирован с правильным контекстом."""
         response = self.authorized_client.get(reverse('posts:index'))
+        self.assertIn('page_obj', response.context)
         first_object = response.context['page_obj'][0]
         post_text_0 = first_object.text
         post_author_0 = first_object.author.username
@@ -115,7 +116,7 @@ class PostPagesTests(TestCase):
         response = self.authorized_client.get(
             reverse(
                 ('posts:group_list'),
-                kwargs={'slug': 'test-slug'}
+                kwargs={'slug': PostPagesTests.group.slug}
             )
         )
         first_object = response.context['page_obj'][0]

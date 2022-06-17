@@ -69,6 +69,9 @@ class Comment(CreatedModel):
         help_text='Текст нового комментария'
     )
 
+    def __str__(self):
+        return self.text
+
 
 class Follow(models.Model):
     user = models.ForeignKey(
@@ -83,3 +86,14 @@ class Follow(models.Model):
         related_name='following',
         verbose_name='Автор'
     )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'author'],
+                name='unique_follow'
+            )
+        ]
+
+    def __str__(self):
+        return str(self.author)
